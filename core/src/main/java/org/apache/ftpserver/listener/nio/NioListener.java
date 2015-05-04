@@ -149,7 +149,7 @@ public class NioListener extends AbstractListener {
             acceptor.getFilterChain().addLast("threadPool",
                     new ExecutorFilter(filterExecutor));
             acceptor.getFilterChain().addLast("codec",
-                    new ProtocolCodecFilter(new FtpServerProtocolCodecFactory()));
+                    new ProtocolCodecFilter(new FtpServerProtocolCodecFactory(context.getCharset())));
             acceptor.getFilterChain().addLast("mdcFilter2", mdcFilter);
             acceptor.getFilterChain().addLast("logger", new FtpLoggingFilter());
     

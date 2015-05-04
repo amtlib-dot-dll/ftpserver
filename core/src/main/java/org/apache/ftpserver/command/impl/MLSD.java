@@ -113,7 +113,7 @@ public class MLSD extends AbstractCommand {
                         .getAttribute("MLST.types"));
 
                 dataConnection.transferToClient(session.getFtpletSession(), directoryLister.listFiles(
-                        parsedArg, session.getFileSystemView(), formater));
+                        parsedArg, session.getFileSystemView(), formater), context.getCharset());
             } catch (SocketException ex) {
                 LOG.debug("Socket exception during data transfer", ex);
                 failure = true;

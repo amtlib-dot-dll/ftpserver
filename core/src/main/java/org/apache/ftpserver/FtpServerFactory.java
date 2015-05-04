@@ -19,6 +19,7 @@
 
 package org.apache.ftpserver;
 
+import java.nio.charset.Charset;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -233,5 +234,13 @@ public class FtpServerFactory {
      */
     public void setConnectionConfig(final ConnectionConfig connectionConfig) {
         serverContext.setConnectionConfig(connectionConfig);
+    }
+
+    public void setCharset(Charset charset) {
+        serverContext.setCharset(charset);
+    }
+
+    public Charset getCharset() {
+        return serverContext.getCharset();
     }
 }

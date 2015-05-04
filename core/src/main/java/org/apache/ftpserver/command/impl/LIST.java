@@ -127,7 +127,7 @@ public class LIST extends AbstractCommand {
             try {
                 dataConnection.transferToClient(session.getFtpletSession(), directoryLister.listFiles(
                         parsedArg, session.getFileSystemView(),
-                        LIST_FILE_FORMATER));
+                        LIST_FILE_FORMATER), context.getCharset());
             } catch (SocketException ex) {
                 LOG.debug("Socket exception during list transfer", ex);
                 failure = true;

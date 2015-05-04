@@ -38,8 +38,11 @@ import org.apache.mina.filter.codec.demux.MessageEncoder;
  * @version $Rev$, $Date$
  */
 public class FtpResponseEncoder extends ProtocolEncoderAdapter {
-    private static final CharsetEncoder ENCODER = Charset.forName("UTF-8")
-            .newEncoder();
+    private final CharsetEncoder encoder;
+
+    public FtpResponseEncoder(Charset charset) {
+        this.encoder = charset.newEncoder();
+    }
 
     public void encode(IoSession session, Object message,
             ProtocolEncoderOutput out) throws Exception {
@@ -47,7 +50,7 @@ public class FtpResponseEncoder extends ProtocolEncoderAdapter {
 
         IoBuffer buf = IoBuffer.allocate(value.length()).setAutoExpand(true);
 
-        buf.putString(value, ENCODER);
+        buf.putString(value, encoder);
 
         buf.flip();
         out.write(buf);

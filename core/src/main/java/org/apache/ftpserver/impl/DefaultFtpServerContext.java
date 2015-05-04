@@ -19,6 +19,7 @@
 
 package org.apache.ftpserver.impl;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -77,6 +78,8 @@ public class DefaultFtpServerContext implements FtpServerContext {
     private ConnectionConfig connectionConfig = new ConnectionConfigFactory().createConnectionConfig();
 
     private Map<String, Listener> listeners = new HashMap<String, Listener>();
+
+    private Charset charset = Charset.forName("UTF-8");
 
     private static final List<Authority> ADMIN_AUTHORITIES = new ArrayList<Authority>();
     private static final List<Authority> ANON_AUTHORITIES = new ArrayList<Authority>();
@@ -243,5 +246,14 @@ public class DefaultFtpServerContext implements FtpServerContext {
 
     public void setConnectionConfig(ConnectionConfig connectionConfig) {
         this.connectionConfig = connectionConfig;
+    }
+
+    public void setCharset(Charset charset) {
+        this.charset = charset;
+    }
+
+    @Override
+    public Charset getCharset() {
+        return charset;
     }
 }
