@@ -19,6 +19,7 @@
 
 package org.apache.ftpserver.impl;
 
+import java.nio.charset.Charset;
 import java.util.Map;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -59,6 +60,11 @@ public interface FtpServerContext extends FtpletContext {
      * Get the command factory.
      */
     CommandFactory getCommandFactory();
+
+    /**
+     * Get the charset
+     */
+    Charset getCharset();
 
     /**
      * Release all components.

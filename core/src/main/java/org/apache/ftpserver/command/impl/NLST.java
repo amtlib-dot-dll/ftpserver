@@ -121,7 +121,7 @@ public class NLST extends AbstractCommand {
                 }
 
                 dataConnection.transferToClient(session.getFtpletSession(), directoryLister.listFiles(
-                        parsedArg, session.getFileSystemView(), formater));
+                        parsedArg, session.getFileSystemView(), formater), context.getCharset());
             } catch (SocketException ex) {
                 LOG.debug("Socket exception during data transfer", ex);
                 failure = true;

@@ -22,6 +22,7 @@ package org.apache.ftpserver.ftplet;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
 
 /**
  *
@@ -57,8 +58,9 @@ public interface DataConnection {
      * @param session The current {@link FtpSession}
      * @param str
      *            The string to transfer
+     * @param charset The charset to use
      * @throws IOException
      */
-    void transferToClient(FtpSession session, String str) throws IOException;
+    void transferToClient(FtpSession session, String str, Charset charset) throws IOException;
 
 }

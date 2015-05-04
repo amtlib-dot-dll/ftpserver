@@ -35,10 +35,14 @@ import org.apache.mina.filter.codec.textline.TextLineDecoder;
  * @author <a href="http://mina.apache.org">Apache MINA Project</a>
  */
 public class FtpServerProtocolCodecFactory implements ProtocolCodecFactory {
-    private final ProtocolDecoder decoder = new TextLineDecoder(Charset
-            .forName("UTF-8"));
+    private final ProtocolDecoder decoder;
 
-    private final ProtocolEncoder encoder = new FtpResponseEncoder();
+    private final ProtocolEncoder encoder;
+
+    public FtpServerProtocolCodecFactory(Charset charset) {
+        decoder = new TextLineDecoder(charset);
+        encoder = new FtpResponseEncoder(charset);
+    }
 
     public ProtocolDecoder getDecoder(IoSession session) throws Exception {
         return decoder;

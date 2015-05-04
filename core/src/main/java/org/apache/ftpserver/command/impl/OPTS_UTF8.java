@@ -52,6 +52,6 @@ public class OPTS_UTF8 extends AbstractCommand {
 
         // send default message
         session.write(LocalizedFtpReply.translate(session, request, context,
-                FtpReply.REPLY_200_COMMAND_OKAY, "OPTS.UTF8", null));
+                "UTF-8".equals(context.getCharset().name()) ? FtpReply.REPLY_200_COMMAND_OKAY : FtpReply.REPLY_502_COMMAND_NOT_IMPLEMENTED, "OPTS.UTF8", null));
     }
 }
